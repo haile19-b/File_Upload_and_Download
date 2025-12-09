@@ -1,6 +1,8 @@
 import express,{Response,Request} from "express";
 import cors from 'cors'
 import dotenv from 'dotenv'
+import swaggerUi from "swagger-ui-express";
+import swaggerSpecs from "./config/swagger";
 import UploadeRouter from "./routes/upload";
 import downloadRouter from "./routes/download";
 
@@ -15,6 +17,7 @@ app.get("/",(req:Request,res:Response)=>{
     res.send("Server Running success Fully!")
 })
 
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpecs));
 app.use("/api",UploadeRouter)
 app.use('/api',downloadRouter)
 
