@@ -1,6 +1,6 @@
 import { Request,Response } from "express"
 import cloudinary from "../config/coudinary";
-export const UploadImageToLocal = async(req:Request,res:Response)=>{
+export const UploadImageToLocal = async(req:Request,res:Response):Promise<Response>=>{
 
     if (!req.files) {
     return res.status(400).json({ message: "Error: No file uploaded" });
